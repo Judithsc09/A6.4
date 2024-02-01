@@ -7,7 +7,7 @@
   </div>
   <div class="card-body">
 
-    <form method="POST" action="{{router ('admin.product.store')}}">
+    <form method="POST" action="{{route ('admin.product.store')}}">
       @csrf
       <div class="row">
         <div class="col">
@@ -21,16 +21,22 @@
         <div class="col">
           <div class="mb-3 row">
             <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Precio:</label>
+          
             <div class="col-lg-10 col-md-6 col-sm-12">
               <input name="price" value="" type="number" class="form-control">
             </div>
           </div>
         </div>
       </div>
+      <input type="file" name="image">
       <div class="mb-3">
         <label class="form-label">Descripción</label>
         <textarea class="form-control" name="description" rows="  3"></textarea>
+ 
       </div>
+   
+     
+      <br>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
   </div>
