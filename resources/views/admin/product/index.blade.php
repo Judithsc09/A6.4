@@ -1,13 +1,15 @@
 @extends('layouts.admin')
 @section('title', $viewData["title"])
 @section('content')
+
+
 <div class="card mb-4">
   <div class="card-header">
     Crear producto
   </div>
   <div class="card-body">
 
-    <form method="POST" action="{{route ('admin.product.store')}}">
+    <form method="post" action="{{route ('admin.product.store')}}" enctype="multipart/form-data" >
       @csrf
       <div class="row">
         <div class="col">
@@ -62,7 +64,11 @@
           <td>{{ $product["id"] }}</td>
           <td>{{ $product["nombre"] }}</td>
           <td><a href="#">Editar</a></td>
-          <td><a href="#">Eliminar</a></td>
+          <form action="{{route('admin.product.delete' , $product['id'] ) }}" method="post">
+              @method('DELETE')
+              @csrf
+              <td><button type="submit" class="btn btn-danger">Eliminar</button></td>
+            </form>
         </tr>
         @endforeach
       </tbody>
@@ -70,3 +76,4 @@
   </div>
 </div>
 @endsection
+
